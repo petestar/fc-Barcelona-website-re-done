@@ -10,8 +10,8 @@
 			</div>
 			<div class="col-12 mb-4">
 				<h1 class="text-dark">Canvas Object Interaction Events</h1>
-				<p class="text-muted">HTML5 Javascript Canvas</p>
-				<canvas class="w-100 rounded border" id="convas" style="cursor: pointer;"></canvas>
+				<p class="text-muted">HTML5 Javascript Canvas Interaction inspired by <a href="https://www.youtube.com/channel/UCXvIGbH6QsPJYtwzQvwhFyw">CodingBanana Youtube Channel</a>. Click the box below to generate random colors.</p>
+				<canvas class="w-100 rounded border" id="convas" style="cursor: pointer; height: 240px;"></canvas>
 			</div>
 		</div>
 	</section>
