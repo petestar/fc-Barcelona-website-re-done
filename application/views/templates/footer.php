@@ -1,24 +1,26 @@
 
 <!-- Jquery -->
-<script src="<?= base_url(); ?>/assets/jquery/jquery.min.js" type="text/javascript"></script>
+<script src="<?= base_url(); ?>assets/jquery/jquery.min.js" type="text/javascript"></script>
 <!-- Popper -->
-<script src="<?= base_url(); ?>/assets/bootstrap/popper.min.js" type="text/javascript"></script>
+<script src="<?= base_url(); ?>assets/bootstrap/popper.min.js" type="text/javascript"></script>
 <!-- Bootstrap JS -->
-<script src="<?= base_url(); ?>/assets/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+<script src="<?= base_url(); ?>assets/bootstrap/bootstrap.min.js" type="text/javascript"></script>
 <!-- general -->
-<script src="<?= base_url(); ?>/assets/js/general.js" type="text/javascript"></script>
+<script src="<?= base_url(); ?>assets/js/general.js" type="text/javascript"></script>
 <!-- login -->
-<script src="<?= base_url(); ?>/assets/js/login.js" type="text/javascript"></script>
+<script src="<?= base_url(); ?>assets/js/login.js" type="text/javascript"></script>
 <!-- signup -->
-<script src="<?= base_url(); ?>/assets/js/signup.js" type="text/javascript"></script>
+<script src="<?= base_url(); ?>assets/js/signup.js" type="text/javascript"></script>
 <!-- contact -->
-<script src="<?= base_url(); ?>/assets/js/contact.js" type="text/javascript"></script>
+<script src="<?= base_url(); ?>assets/js/contact.js" type="text/javascript"></script>
 <!-- chat -->
-<script src="<?= base_url(); ?>/assets/js/chat.js" type="text/javascript"></script>
+<script src="<?= base_url(); ?>assets/js/chat.js" type="text/javascript"></script>
 <!-- news -->
-<script src="<?= base_url(); ?>/assets/js/news.js" type="text/javascript"></script>
+<script src="<?= base_url(); ?>assets/js/news.js" type="text/javascript"></script>
 <!-- dropzone.min.js -->
-<script src="<?= base_url(); ?>/assets/dropzone/dropzone.js" type="text/javascript"></script>
+<script src="<?= base_url(); ?>assets/dropzone/dropzone.js" type="text/javascript"></script>
+<!-- canvas -->
+<script src="<?= base_url(); ?>assets/js/canvas.js" type="text/javascript"></script>
 <script type="text/javascript">
 	Dropzone.autoDiscover = false;
 	const uploadForm = document.getElementById('upload-form');

@@ -8,6 +8,11 @@
 				<form action="<?= base_url(); ?>gift/upload" class="dropzone" enctype="multipart/form-data" id="upload-form">
 				</form>
 			</div>
+			<div class="col-12 mb-4">
+				<h1 class="text-dark">Canvas Object Interaction Events</h1>
+				<p class="text-muted">HTML5 Javascript Canvas</p>
+				<canvas class="w-100 rounded border" id="convas" style="cursor: pointer;"></canvas>
+			</div>
 		</div>
 	</section>
 </main>
