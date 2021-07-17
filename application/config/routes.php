@@ -60,6 +60,7 @@ $route['auth']["POST"] = 'login/auth';
 $route['logout']["GET"] = 'login/logout';
 
 $route['signup']["POST"] = 'signup/process';
+$route['contact']["POST"] = 'contact/process';
 
 $route['news/add']["POST"] = 'news/add';
 $route['news/image/upload/(:num)']["POST"] = 'news/upload/$1';

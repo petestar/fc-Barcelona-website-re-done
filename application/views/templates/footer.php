@@ -25,7 +25,7 @@
 
 	if (uploadForm) {
 		var myDropzone = new Dropzone("#upload-form", { 
-			url: "<?= base_url(); ?>/gift/upload",
+			url: "<?= base_url(); ?>gift/upload",
 			paramName: "file", // The name that will be used to transfer the file
 			maxFilesize: 10, // MB
 		});
