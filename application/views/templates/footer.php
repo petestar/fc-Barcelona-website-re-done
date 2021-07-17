@@ -133,6 +133,6 @@
 		  	InfoWindow.open(map);
 		});
 	</script>
-	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDfPOvu93fUCGEbeTTszz141aom9dsQJ4g&callback=drawGoogleMap&libraries=&v=weekly" async></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfPOvu93fUCGEbeTTszz141aom9dsQJ4g&callback=drawGoogleMap&libraries=&v=weekly" async></script>
 <?php endif; ?>
 </html>

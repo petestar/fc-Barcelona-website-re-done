@@ -25,6 +25,13 @@
           </ul>
           <ul class="d-flex align-items-center">
             <?php if(isset($_SESSION['status'])): ?>
+              <?php if(isset($_SESSION['role'])): ?>
+                <?php if($_SESSION['role'] === 'admin'): ?>
+                    <li class="ml-4">
+              <a href="<?= base_url(); ?>admin" class="text-white mr-4">Admin</a>
+            </li>
+                <?php endif; ?>
+              <?php endif; ?>
               <li class="">
                   <a href="<?= base_url(); ?>logout" class="btn btn-sm border-white text-white rounded-pill px-4">logout</a>
                 </li>
@@ -66,6 +73,26 @@
     <div class="mb-4">
       <a href="<?= base_url(); ?>gift" class="px-4 rounded bg-light text-pink py-3  m-0 d-block text-muted">Drag Gift</a>
     </div>
+
+    <?php if(isset($_SESSION['status'])): ?>
+              <?php if(isset($_SESSION['role'])): ?>
+                <?php if($_SESSION['role'] === 'admin'): ?>
+                    <div class="mb-4">
+      <a href="<?= base_url(); ?>admin" class="px-4 rounded bg-light text-pink py-3  m-0 d-block text-muted">Admin</a>
+    </div>
+                <?php endif; ?>
+              <?php endif; ?>
+              <div class="mb-4">
+      <a href="<?= base_url(); ?>logout" class="px-4 rounded bg-light text-pink py-3  m-0 d-block text-muted">Logout</a>
+    </div>
+              <?php else: ?>
+              <div class="mb-4">
+      <a href="<?= base_url(); ?>signup" class="px-4 rounded bg-light text-pink py-3  m-0 d-block text-muted">Signup</a>
+    </div>
+                <div class="mb-4">
+      <a href="<?= base_url(); ?>login" class="px-4 rounded bg-light text-pink py-3  m-0 d-block text-muted">Login</a>
+    </div>
+            <?php endif; ?>
     
   </section>
 </nav>

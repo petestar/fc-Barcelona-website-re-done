@@ -25,8 +25,7 @@ class Login_model extends CI_Model {
 
         $role = $user->role;
         $_SESSION['role'] = $role;
-        $redirect = $role === 'admin' ? base_url().'admin' : base_url();
-        return ['status' => 1, 'info' => 'Login Successful', 'redirect' => $redirect];
+        return ['status' => 1, 'info' => 'Login Successful', 'redirect' => base_url()];
 
     }
 
