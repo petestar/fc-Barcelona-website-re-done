@@ -78,37 +78,43 @@
     </section>
     <section style="padding: 0 0 80px;">
     	<div class="container">
-    		<header class="text-md-center mb-4">
+    		<header class="text-md-center mb-3">
     			<h1>Barcelona News</h1>
+    			<div class="row justify-content-center">
+    				<div class="col-12 col-md-5">
+    					<p>"AGUEROOOOOOOOOOOOOOOOOO! Welcone to your new home, legend! And Eric, welcome back home! ❤❤❤💪💪" <a href="<?= base_url(); ?>news">(See all news)</a></p>
+    				</div>
+    			</div>
     		</header>
-    		<div class="row">
-    			<?php if(empty($allNews)): ?>
-    				<div class="alert alert-info">No News Yet</div>
-    			<?php else: ?>
-    				<?php foreach($allNews as $news): ?>
-    					<div class="col-12 col-md-4 mb-4">
-    						<div class="card border-0">
-    							<div class="card-body px-0">
-    								<div class="card-img mb-3">
-    									<img src="<?= base_url(); ?>/assets/images/news/<?= empty($news->image) ? '' : $news->image; ?>" class="img-fluid border">
-    								</div>
-    								<?php $title = empty($news->title) ? '' : $news->title; ?>
-    								<?php $formattitle = implode(explode(' ', $title), '-'); ?>
-    								<?php $id = empty($news->id) ? '' : $news->id; ?>
-    								<h4><a href="<?= base_url(); ?>/news/<?= $id; ?>/<?= $formattitle; ?>" class="text-dark"><?= substr($title, 0, 25); ?></a> </h4>
-    								<p class="text-muted">
-    									<a href="<?= base_url(); ?>/news/<?= $id; ?>/<?= $formattitle; ?>" class="text-muted" style="text-decoration: underline;"><?= empty($news->description) ? '' : substr($news->description, 0, 50).'...'; ?></a>
-    								</p>
-    								<div class="text-muted mb-3">
-    									<small>Posted <?= \App\Libraries\Timeago::make($news->createdat ?? date('Y-m-d')); ?> <em>By </em> <?= empty($news->author) ? 'Barcelona' : ucwords($news->author); ?></small>
-    								</div>
-    								<a href="<?= base_url(); ?>/news/<?= $id; ?>/<?= $formattitle; ?>" class="btn btn-primary px-4 rounded-pill">Read News</a>
-    							</div>
-    						</div>
-    					</div>
-    				<?php endforeach; ?>
-    			<?php endif; ?>
-    		</div>
+    		<?php if(empty($allNews)): ?>
+				<div class="alert alert-info d-block text-center">No News Yet</div>
+			<?php else: ?>
+	    		<div class="row">
+	    			<?php $slicedNews = count($allNews) > 6 ? array_slice($allNews, 0, 6) : $allNews; ?>
+					<?php foreach($slicedNews as $news): ?>
+						<div class="col-12 col-md-4 mb-4">
+							<div class="card border-0">
+								<div class="card-body px-0">
+									<div class="card-img mb-3">
+										<img src="<?= base_url(); ?>assets/images/news/<?= empty($news->image) ? '' : $news->image; ?>" class="img-fluid border">
+									</div>
+									<?php $title = empty($news->title) ? '' : $news->title; ?>
+									<?php $formattitle = implode(explode(' ', $title), '-'); $formattitle = str_replace(',', '', $formattitle); ?>
+									<?php $id = empty($news->id) ? '' : $news->id; ?>
+									<h4><a href="<?= base_url(); ?>news/<?= $id; ?>/<?= $formattitle; ?>" class="text-dark"><?= substr($title, 0, 25); ?></a> </h4>
+									<p class="text-muted">
+										<a href="<?= base_url(); ?>news/<?= $id; ?>/<?= $formattitle; ?>" class="text-muted" style="text-decoration: underline;"><?= empty($news->description) ? '' : substr($news->description, 0, 50).'...'; ?></a>
+									</p>
+									<div class="text-muted mb-3">
+										<small>Posted <?= CI_Timeago::make($news->createdat ?? date('Y-m-d')); ?> <em>By </em> <?= empty($news->author) ? 'Barcelona' : ucwords($news->author); ?></small>
+									</div>
+									<a href="<?= base_url(); ?>news/<?= $id; ?>/<?= $formattitle; ?>" class="btn btn-primary px-4 rounded-pill">Read News</a>
+								</div>
+							</div>
+						</div>
+					<?php endforeach; ?>
+	    		</div>
+	    	<?php endif; ?>
     	</div>
     </section>
 </main>

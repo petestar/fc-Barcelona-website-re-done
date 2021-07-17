@@ -1,27 +1,10 @@
 <?php
 
-namespace App\Controllers;
-
-class Home extends BaseController
-{
-	public function __construct()
-	{
-		\App\Libraries\Auth::check();
-	}
-	
-	public function index()
-	{
-		echo view('templates/header');
-		echo view('home.php', ['session' => $this->session, 'allNews' => (new \App\Models\News)->all()]);
-		echo view('templates/footer');
-	}
-
-}
-
-
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+
+class Home extends CI_Controller 
+{
 
 	/**
 	 * Index Page for this controller.
@@ -40,6 +23,11 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$this->load->model('news_model');
+		$this->load->view('templates/header');
+		$this->load->view('includes/navbar');
+		$this->load->view('home', ['allNews' => $this->news_model->all()]);
+		$this->load->view('includes/bottom');
+		$this->load->view('templates/footer');
 	}
 }

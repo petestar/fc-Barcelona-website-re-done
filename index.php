@@ -304,6 +304,9 @@ switch (ENVIRONMENT)
 	}
 
 	define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);
+	define('IMAGES_PATH', str_replace('\\', '/', dirname(__FILE__)).'/assets/images');
+
+	$assign_to_config['site_url'] = 'http://localhost.ly'; 
 
 /*
  * --------------------------------------------------------------------

@@ -84,6 +84,11 @@ class CI_Controller {
 
 		$this->load =& load_class('Loader', 'core');
 		$this->load->initialize();
+
+		$this->load->helper('url');
+		$this->load->library('session');
+		$this->load->library('timeago');
+		$this->load->library('response');
 		log_message('info', 'Controller Class Initialized');
 	}
 
