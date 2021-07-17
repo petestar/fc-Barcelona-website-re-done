@@ -1,34 +1,42 @@
 const possibleEmojis = [
-    '🐀','🐁','🐭','🐹','🐂','🐃','🐄','🐮','🐅','🐆','🐯','🐇','🐐','🐑','🐏','🐴',
-    '🐎','🐱','🐈','🐰','🐓','🐔','🐤','🐣','🐥','🐦','🐧','🐘','🐩','🐕','🐷','🐖',
-    '🐗','🐫','🐪','🐶','🐺','🐻','🐨','🐼','🐵','🙈','🙉','🙊','🐒','🐉','🐲','🐊',
-    '🐍','🐢','🐸','🐋','🐳','🐬','🐙','🐟','🐠','🐡','🐚','🐌','🐛','🐜','🐝','🐞',
-];
+	    '🐀','🐁','🐭','🐹','🐂','🐃','🐄','🐮','🐅','🐆','🐯','🐇','🐐','🐑','🐏','🐴',
+	    '🐎','🐱','🐈','🐰','🐓','🐔','🐤','🐣','🐥','🐦','🐧','🐘','🐩','🐕','🐷','🐖',
+	    '🐗','🐫','🐪','🐶','🐺','🐻','🐨','🐼','🐵','🙈','🙉','🙊','🐒','🐉','🐲','🐊',
+	    '🐍','🐢','🐸','🐋','🐳','🐬','🐙','🐟','🐠','🐡','🐚','🐌','🐛','🐜','🐝','🐞',
+	];
 
-function randomEmoji() {
-  var randomIndex = Math.floor(Math.random() * possibleEmojis.length);
-  return possibleEmojis[randomIndex];
-}
+	function randomEmoji() {
+	  var randomIndex = Math.floor(Math.random() * possibleEmojis.length);
+	  return possibleEmojis[randomIndex];
+	}
 
-const emoji = randomEmoji();
-if (!location.hash) {
-  	location.hash = Math.floor(Math.random() * 0xFFFFFF).toString(16);
-}
+	const emoji = randomEmoji();
+	// const name = prompt("What's your name?");
 
-const chatHash = location.hash.substring(1);
-const drone = new ScaleDrone('yiS12Ts5RdNhebyM');
-const roomName = 'observable-' + chatHash;
-let room;
+	// Generate random chat hash if needed
+	if (!location.hash) {
+	  	location.hash = Math.floor(Math.random() * 0xFFFFFF).toString(16);
+	}
 
-const configuration = {
-    iceServers: [{
-      	url: 'stun:stun.l.google.com:19302'
-    }]
-};
+	const chatHash = location.hash.substring(1);
+	// TODO: Replace with your own channel ID
+	const drone = new ScaleDrone('yiS12Ts5RdNhebyM');
+	// Scaledrone room name needs to be prefixed with 'observable-'
+	const roomName = 'observable-' + chatHash;
+	// Scaledrone room used for signaling
+	let room;
 
-let pc;
-let dataChannel;
-if(drone) {
+	const configuration = {
+	    iceServers: [{
+	      	url: 'stun:stun.l.google.com:19302'
+	    }]
+	};
+	// RTCPeerConnection
+	let pc;
+	// RTCDataChannel
+	let dataChannel;
+
+	// Wait for Scaledrone signalling server to connect
 	drone.on('open', error => {
 		if (error) {
 		    return console.error(error);
@@ -40,13 +48,17 @@ if(drone) {
 		    }
 		    console.log('Connected to signaling server');
 		});
+		  // We're connected to the room and received an array of 'members'
+		  // connected to the room (including us). Signaling server is ready.
 		room.on('members', members => {
 		    if (members.length >= 3) return alert('The room is full');
+		    // If we are the second user to connect to the room we will be creating the offer
 		    const isOfferer = members.length === 2;
 		    startWebRTC(isOfferer);
 		});
 	});
 
+	// Send signaling data via Scaledrone
 	function sendSignalingMessage(message) {
 	  	drone.publish({
 		    room: roomName,
@@ -57,6 +69,8 @@ if(drone) {
 	function startWebRTC(isOfferer) {
 		console.log('Starting WebRTC in as', isOfferer ? 'offerer' : 'waiter');
 		pc = new RTCPeerConnection(configuration);
+		  // 'onicecandidate' notifies us whenever an ICE agent needs to deliver a
+		  // message to the other peer through the signaling server
 		pc.onicecandidate = event => {
 		    if (event.candidate) {
 		      	sendSignalingMessage({'candidate': event.candidate});
@@ -65,12 +79,14 @@ if(drone) {
 
 
 		if (isOfferer) {
+		    // If user is offerer let them create a negotiation offer and set up the data channel
 		    pc.onnegotiationneeded = () => {
 		        pc.createOffer(localDescCreated, error => console.error(error));
 		    }
 		    dataChannel = pc.createDataChannel('chat');
 		    setupDataChannel();
 		} else {
+		    // If user is not the offerer let wait for a data channel
 		    pc.ondatachannel = event => {
 		        dataChannel = event.channel;
 		        setupDataChannel();
@@ -149,26 +165,22 @@ if(drone) {
 			
 	}
 
-	const chatForm = document.querySelector('chat-form');
-	if (chatForm) {
-		chatForm.addEventListener('submit', () => {
-		  	const input = document.querySelector('.chat-input');
-		  	if (input) {
-		  		const value = input.value;
-			  	input.value = '';
+	const form = document.querySelector('form');
+	if (form) {
+		form.addEventListener('submit', () => {
+		  	const input = document.querySelector('input[type="text"]');
+		  	const value = input.value;
+		  	input.value = '';
 
-			  	const data = {
-				    name,
-				    content: value,
-				    emoji,
-			  	};
+		  	const data = {
+			    name,
+			    content: value,
+			    emoji,
+		  	};
 
-			  	dataChannel.send(JSON.stringify(data));
-			  	insertMessageToDOM(data, true);
-		  	}
-			  	
+		  	dataChannel.send(JSON.stringify(data));
+		  	insertMessageToDOM(data, true);
 		});
 	}
 		
 	insertMessageToDOM({content: 'Chat URL is ' + location.href + '. Share link with a fan and start your Chat.'});
-}
