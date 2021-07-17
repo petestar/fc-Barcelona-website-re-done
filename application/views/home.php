@@ -40,37 +40,37 @@
 	        <main class="row">
 	            <div class="col-12 col-md-4 col-lg-3 mb-4">
                     <picture class="">
-                        <img class="img-fluid" src="<?= base_url(); ?>/assets/images/culers/1.jpg">
+                        <img class="img-fluid" src="<?= base_url(); ?>assets/images/culers/1.jpg">
                     </picture>
 	            </div>
 	            <div class="col-12 col-md-4 col-lg-3 mb-4">
                     <picture class="">
-                        <img class="img-fluid" src="<?= base_url(); ?>/assets/images/culers/2.webp">
+                        <img class="img-fluid" src="<?= base_url(); ?>assets/images/culers/2.webp">
                     </picture>
 	            </div>
 	            <div class="col-12 col-md-4 col-lg-3 mb-4">
                     <picture class="">
-                        <img class="img-fluid" src="<?= base_url(); ?>/assets/images/culers/3.webp">
+                        <img class="img-fluid" src="<?= base_url(); ?>assets/images/culers/3.webp">
                     </picture>
 	            </div>
 	            <div class="col-12 col-md-4 col-lg-3 mb-4">
                     <picture class="">
-                        <img class="img-fluid" src="<?= base_url(); ?>/assets/images/culers/4.webp">
+                        <img class="img-fluid" src="<?= base_url(); ?>assets/images/culers/4.webp">
                     </picture>
 	            </div>
 	            <div class="col-12 col-md-4 col-lg-3 mb-4">
                     <picture class="">
-                        <img class="img-fluid" src="<?= base_url(); ?>/assets/images/culers/5.webp">
+                        <img class="img-fluid" src="<?= base_url(); ?>assets/images/culers/5.webp">
                     </picture>
 	            </div>
 	            <div class="col-12 col-md-4 col-lg-3 mb-4">
                     <picture class="">
-                        <img class="img-fluid" src="<?= base_url(); ?>/assets/images/culers/6.webp">
+                        <img class="img-fluid" src="<?= base_url(); ?>assets/images/culers/6.webp">
                     </picture>
 	            </div>
 	            <div class="col-12 col-md-4 col-lg-3 mb-4">
                     <picture class="">
-                        <img class="img-fluid" src="<?= base_url(); ?>/assets/images/culers/7.webp">
+                        <img class="img-fluid" src="<?= base_url(); ?>assets/images/culers/7.webp">
                     </picture>
 	            </div>
 	        </main>

@@ -26,7 +26,7 @@
           <ul class="d-flex align-items-center">
             <?php if(isset($_SESSION['status'])): ?>
               <li class="">
-                  <a href="<?= base_url(); ?>login/logout" class="btn btn-sm border-white text-white rounded-pill px-4">logout</a>
+                  <a href="<?= base_url(); ?>logout" class="btn btn-sm border-white text-white rounded-pill px-4">logout</a>
                 </li>
               <?php else: ?>
               <li class="mr-4">

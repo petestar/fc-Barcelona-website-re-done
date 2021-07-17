@@ -89,6 +89,7 @@ class CI_Controller {
 		$this->load->library('session');
 		$this->load->library('timeago');
 		$this->load->library('response');
+		$this->load->library('auth');
 		log_message('info', 'Controller Class Initialized');
 	}
 

@@ -5,16 +5,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller 
 {
-
-	public function __construct() {
+	public function __construct()
+	{
 		parent::__construct();
-		// var_dump($_SESSION);
-		// die();
-		if (isset($_SESSION['role'])) {
-			if($_SESSION['role'] !== 'admin') {
-				header("Location: ". base_url().'login');
-			}
-		}
+		CI_Auth::admin();
 	}
 
 	public function index()
