@@ -48,6 +48,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class CI_Model {
 
+    protected $_ci;
+
 	/**
 	 * Class constructor
 	 *
@@ -56,6 +58,9 @@ class CI_Model {
 	 */
 	public function __construct() {
         $this->load->database();
+        $this->_ci = &get_instance();
+        $this->_ci->load->model('login_model');
+
     }
 
 	/**

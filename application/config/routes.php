@@ -53,12 +53,13 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['about'] = 'about';
-$route['admin'] = 'admin';
+$route['about']["GET"] = 'about';
+$route['admin']["GET"] = 'admin';
 
-$route['login']["GET"] = 'login';
 $route['auth']["POST"] = 'login/auth';
 $route['logout']["GET"] = 'login/logout';
+
+$route['signup']["POST"] = 'signup/process';
 
 $route['news/add']["POST"] = 'news/add';
 $route['news/image/upload/(:num)']["POST"] = 'news/upload/$1';

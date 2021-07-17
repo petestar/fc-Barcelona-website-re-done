@@ -30,4 +30,10 @@ class Login_model extends CI_Model {
 
     }
 
+    public function findByEmail($email)
+    {
+        $query = $this->db->query("SELECT * FROM $this->table WHERE email = ? LIMIT 1", [$email]);
+        return $query->row();
+    }
+
 }

@@ -22,7 +22,7 @@ class Signup extends CI_Controller
 	public function process()
 	{
 		if ($this->input->is_ajax_request()) {
-			$data = ['email' => $this->input->post('email'), 'password' => $this->input->post('password')];
+			$data = ['email' => $this->input->post('email'), 'password' => $this->input->post('password'), 'confirmpassword' => $this->input->post('confirmpassword'), 'username' => $this->input->post('username')];
 	    	$this->load->model('signup_model');
 	    	$response = $this->signup_model->signup($data);
 	    	return (new CI_Response(200, ['Content-Type: application/json']))->send($response);
